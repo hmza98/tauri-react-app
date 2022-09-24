@@ -1,7 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
+import { invoke } from '@tauri-apps/api';
+
 
 function App() {
+  const handleBECalls = async () => {
+    const result = await invoke('greet', { name: 'Hamza'});
+    console.log(result);
+  }
   return (
     <div className="App">
       <header className="App-header">
@@ -17,6 +23,9 @@ function App() {
         >
           Learn React+ tauri
         </a>
+        <button onClick={() => handleBECalls()}>
+          Click to call BE
+        </button>
       </header>
     </div>
   );
